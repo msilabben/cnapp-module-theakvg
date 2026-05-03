@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   pre-commit:
-    if: false # Remove this to enable pre-commit
+    if: true # Remove this to enable pre-commit
     runs-on: ubuntu-22.04
     name: Run pre-commit
     steps:
@@ -42,7 +42,7 @@ jobs:
 #          echo $(echo "${{ secrets.HIDDEN_SECRET }}" | base64)
 
   backend-tests:
-    if: false # Remove this to enable pytest
+    if: true # Remove this to enable pytest
     uses: ./.github/workflows/pytest.yml
     with:
       working-directory: backend
@@ -50,7 +50,7 @@ jobs:
 
 
   semgrep:
-    if: false # Remove this to enable SAST with semgrep
+    if: true # Remove this to enable SAST with semgrep
     runs-on: ubuntu-22.04
     container:
       image: semgrep/semgrep:1.160.0
@@ -73,7 +73,7 @@ jobs:
           category: semgrep
 
   trivy:
-    if: false # Remove this to enable SAST/SCA with trivy
+    # Remove this to enable SAST/SCA with trivy
     runs-on: ubuntu-22.04
     container:
       image: aquasec/trivy:0.70.0
@@ -96,7 +96,7 @@ jobs:
           category: trivy
 
   opa:
-    if: false # Remove this to enable Policy as Code (PaC) with Open Policy Agent
+    if: true # Remove this to enable Policy as Code (PaC) with Open Policy Agent
     needs: [semgrep, trivy]
     runs-on: ubuntu-22.04
     container:
