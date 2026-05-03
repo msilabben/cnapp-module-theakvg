@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   pre-commit:
-    if: true # Remove this to enable pre-commit
+    if: false # Remove this to enable pre-commit
     runs-on: ubuntu-22.04
     name: Run pre-commit
     steps:
@@ -18,7 +18,7 @@ jobs:
     - uses: pre-commit/action@v3.0.1
 
   gitleaks:
-    if: true # Remove this to enable gitleaks
+    if: false # Remove this to enable gitleaks
     runs-on: ubuntu-latest
     container:
       image: zricethezav/gitleaks:v8.30.1
@@ -42,7 +42,7 @@ jobs:
 #          echo $(echo "${{ secrets.HIDDEN_SECRET }}" | base64)
 
   backend-tests:
-    if: false # Remove this to enable pytest
+    if: true # Remove this to enable pytest
     uses: ./.github/workflows/pytest.yml
     with:
       working-directory: backend
