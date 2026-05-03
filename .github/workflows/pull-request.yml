@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   pre-commit:
-    if: false # Remove this to enable pre-commit
+    if: true # Remove this to enable pre-commit
     runs-on: ubuntu-22.04
     name: Run pre-commit
     steps:
