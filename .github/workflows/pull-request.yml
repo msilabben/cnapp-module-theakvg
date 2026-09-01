@@ -41,7 +41,7 @@ jobs:
         run: semgrep scan --sarif --sarif-output=semgrep_results.sarif
 
       - name: Upload Semgrep SARIF artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: semgrep-results
           path: semgrep_results.sarif
@@ -64,7 +64,7 @@ jobs:
         run: trivy fs --format sarif -o trivy_results.sarif --scanners vuln,config,secret,license .
 
       - name: Upload Trivy SARIF artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: trivy-results
           path: trivy_results.sarif
